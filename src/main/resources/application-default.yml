@@ -1,0 +1,106 @@
+logging:
+  level:
+    org.springframework.web.servlet: info
+    org.springframework.boot.actuate: off
+    org.springframework.web: debug
+    org.springframework.boot: info
+    org.springframework.orm.jpa: debug
+    org.springframework.transaction: debug
+    org.hibernate.SQL: debug
+    org.hibernate.type: off
+    org.hibernate.tool.schema: error
+    com.zaxxer.hikari: error
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+    org.springframework.data.redis: debug
+    io.mustelidae.otter.sumatrana: debug
+
+server:
+  error:
+    include-stacktrace: always
+    whitelabel:
+      enabled: false
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+  port: 4210
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      use-new-id-generator-mappings: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        use_sql_comments: true
+        default_batch_fetch_size: 50
+        enable_lazy_load_no_trans: false
+        format_sql: true
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+  datasource:
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 3
+      maximum-pool-size: 30
+      pool-name: SpringBootHikariCP
+    driver-class-name: org.h2.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:~/embedded;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL;DATABASE_TO_UPPER=FALSE
+    username: local
+    password: local
+
+springdoc:
+  show-actuator: false
+  swagger-ui:
+    enabled: true
+    tags-sorter: alpha
+
+app:
+  end-point:
+    slack:
+      host: https://localhost
+      logging: true
+    sentry:
+      host: https://localhost
+      logging: true
+  tunneling:
+    target:
+      sentry:
+        projects:
+          -
+            key: SentryA
+            projectId: 1
+            projectName: sample
+          -
+            key: SentryB
+            projectId: 2
+            projectName: dummy
+      slack:
+        senders:
+          -
+            key: SlackA
+            type: bot
+            value: dummy-token
+          -
+            key: SlackB
+            type: webhook
+            value: /services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+    rule:
+      sentry-to-slack-mappings:
+        -
+          key: TNGR
+          slack-channel: proj-sample
+          style: default
+          sentry-key: SentryA
+          slack-key: SlackA
+        -
+          key: ARDGRD
+          slack-channel: proj-dummy
+          style: default
+          sentry-key: SentryB
+          slack-key: SlackB
+
+
