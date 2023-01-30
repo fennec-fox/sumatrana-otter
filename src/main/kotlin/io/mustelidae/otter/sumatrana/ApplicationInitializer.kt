@@ -58,12 +58,11 @@ private class SentryToSlackInitializer(
             val slack = groupOfSlack.find { slack: Slack -> slack.key == it.slackKey }?: throw DevelopMistakeException("not found slack key")
 
             val tunneling = SentryToSlackTunneling(
-                it.key,
                 it.slackChannel,
                 it.style?: "default",
             ).apply {
-                setBy(sentry)
-                setBy(slack)
+                setBySentry(sentry)
+                setBySlack(slack)
             }
             sentryToSlackTunnelingRepository.save(tunneling)
         }

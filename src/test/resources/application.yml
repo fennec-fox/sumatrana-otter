@@ -80,31 +80,33 @@ app:
     target:
       sentry:
         projects:
-          - key: SP1
-            projectId: 1
+          -
+            key: SK1
+            projectId: 3
             projectName: sample
-          - key: SP2
-            projectId: 2
+          -
+            key: SK2
+            projectId: 4
             projectName: dummy
       slack:
         senders:
-          - key: SS1
+          -
+            key: SSK1
             type: bot
             value: dummy-token
-          - key: SS2
+          -
+            key: SSK2
             type: webhook
             value: /services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
     rule:
       sentry-to-slack-mappings:
         -
-          key: STSM1
           slack-channel: proj-sample
           style: default
-          sentry-key: SP1
-          slack-key: SS1
+          sentry-key: SK1
+          slack-key: SSK1
         -
-          key: STSM2
           slack-channel: proj-dummy
           style: default
-          sentry-key: SP2
-          slack-key: SS2
+          sentry-key: SK2
+          slack-key: SSK2

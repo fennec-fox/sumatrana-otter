@@ -13,9 +13,8 @@ class SentryForwardControllerTest: FlowTestSupport() {
         val type = "error"
         val payload = jsonOfNodeFormat.fromJson<SentryResources.Payload>()
         // applaction.yml
-        val key = "STSM1"
 
-        sentryForwardControllerFlow.sentryToSlack(type, key, payload)
+        sentryForwardControllerFlow.sentryToSlack(type, payload)
     }
 
 
@@ -25,8 +24,7 @@ class SentryForwardControllerTest: FlowTestSupport() {
         val type = "error"
         val payload = jsonOfJavaFormat.fromJson<SentryResources.Payload>()
         // applaction.yml app.tunneling.rule.sentry-to-slack-mappings.key
-        val key = "STSM2"
-        sentryForwardControllerFlow.sentryToSlack(type, key, payload)
+        sentryForwardControllerFlow.sentryToSlack(type, payload)
     }
 
     val jsonOfNodeFormat = """
@@ -176,7 +174,7 @@ class SentryForwardControllerTest: FlowTestSupport() {
                 "value": "heck is not defined"
               },
               "platform": "javascript",
-              "project": 1,
+              "project": 3,
               "received": 1566248777.677,
               "release": null,
               "request": {
@@ -262,7 +260,7 @@ class SentryForwardControllerTest: FlowTestSupport() {
           "data":{
             "error":{
               "event_id":"5b073d7f582e40968d2401cf69251e10",
-              "project":9,
+              "project":4,
               "release":null,
               "dist":null,
               "platform":"java",

@@ -56,7 +56,6 @@ class AppEnvironment {
             var sentryToSlackMappings: List<SentryToSlackMapping> = emptyList()
             @NoArg
             data class SentryToSlackMapping(
-                var key: String,
                 var slackChannel: String,
                 var sentryKey: String,
                 var slackKey: String,

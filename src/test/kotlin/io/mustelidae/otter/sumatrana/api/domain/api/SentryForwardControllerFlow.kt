@@ -12,10 +12,9 @@ class SentryForwardControllerFlow(
 ) {
     fun sentryToSlack(
         type: String,
-        key: String,
         request: SentryResources.Payload
     ) {
-        val uri = linkTo<SentryForwardController> { sentryToSlack(type, key, request) }.toUri()
+        val uri = linkTo<SentryForwardController> { sentryToSlack(type, request) }.toUri()
 
         mockMvc.post(uri) {
             header("sentry-hook-resource", type)

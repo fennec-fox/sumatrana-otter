@@ -91,13 +91,11 @@ app:
     rule:
       sentry-to-slack-mappings:
         -
-          key: TNGR
           slack-channel: proj-sample
           style: default
           sentry-key: SentryA
           slack-key: SlackA
         -
-          key: ARDGRD
           slack-channel: proj-dummy
           style: default
           sentry-key: SentryB
