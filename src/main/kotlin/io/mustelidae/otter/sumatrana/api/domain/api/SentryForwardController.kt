@@ -21,7 +21,7 @@ class SentryForwardController(
      * Sentry to Slack
      * @ref https://docs.sentry.io/product/integrations/integration-platform/webhooks/
      */
-    @PostMapping("/sentry-to-slack/Pcx8ITsfcljdBuxTL5LsSbx8")
+    @PostMapping("/from/sentry/to/slack")
     fun sentryToSlack(
         @RequestHeader("sentry-hook-resource") type: String,
         @RequestBody request: SentryResources.Payload

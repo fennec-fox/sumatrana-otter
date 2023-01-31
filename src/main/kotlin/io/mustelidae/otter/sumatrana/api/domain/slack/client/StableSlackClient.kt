@@ -18,7 +18,7 @@ class StableSlackClient(
     override fun incomingWebhook(path: String, payload: SlackResources.Payload) {
         val header = listOf("Content-Type" to "application/json")
 
-        val url = "${env.host}/$path"
+        val url = "${env.host}$path"
 
         httpClient.post(url, header, payload).orElseThrow()
     }
