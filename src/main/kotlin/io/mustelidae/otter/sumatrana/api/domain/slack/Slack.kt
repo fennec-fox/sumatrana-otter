@@ -10,7 +10,6 @@ import javax.persistence.Index
 import javax.persistence.OneToMany
 import javax.persistence.Table
 
-
 @Entity
 @Table(
     indexes = [
@@ -38,15 +37,12 @@ class Slack(
 
     fun addBy(sentryToSlackTunneling: SentryToSlackTunneling) {
         sentryToSlackTunnelings.add(sentryToSlackTunneling)
-        if( sentryToSlackTunneling.slack != this)
+        if (sentryToSlackTunneling.slack != this)
             sentryToSlackTunneling.setBySlack(this)
-
     }
 
     enum class Type {
         BOT,
         WEBHOOK
     }
-
-
 }

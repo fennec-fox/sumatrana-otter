@@ -16,7 +16,6 @@ class SentryForwardController(
     private val sentryErrorTunnelingInteraction: SentryErrorTunnelingInteraction
 ) {
 
-
     /**
      * Sentry to Slack
      * @ref https://docs.sentry.io/product/integrations/integration-platform/webhooks/
@@ -27,8 +26,8 @@ class SentryForwardController(
         @RequestBody request: SentryResources.Payload
     ): Reply<Unit> {
 
-        when(type) {
-            "error" -> sentryErrorTunnelingInteraction.toSlack(request)
+        when (type) {
+            "error", "event_alert", "event" -> sentryErrorTunnelingInteraction.toSlack(request)
         }
         return Unit.toReply()
     }

@@ -37,7 +37,8 @@ class ExceptionConfiguration(
     @ResponseBody
     fun handleGlobalException(e: RuntimeException, request: HttpServletRequest): GlobalErrorFormat {
         log.error("Unexpected error", e)
-        return errorForm(request, e,
+        return errorForm(
+            request, e,
             io.mustelidae.otter.sumatrana.api.common.Error(
                 io.mustelidae.otter.sumatrana.api.common.ErrorCode.S000,
                 "Oops, something went wrong."
@@ -49,7 +50,8 @@ class ExceptionConfiguration(
     @ResponseStatus(INTERNAL_SERVER_ERROR)
     @ResponseBody
     fun handleInvalidDataAccessApiUsageException(e: InvalidDataAccessApiUsageException, request: HttpServletRequest): GlobalErrorFormat {
-        return errorForm(request, e,
+        return errorForm(
+            request, e,
             io.mustelidae.otter.sumatrana.api.common.Error(
                 io.mustelidae.otter.sumatrana.api.common.ErrorCode.SD01,
                 e.message!!
@@ -64,7 +66,8 @@ class ExceptionConfiguration(
     @ResponseStatus(INTERNAL_SERVER_ERROR)
     @ResponseBody
     fun handleIllegalStateException(e: IllegalStateException, request: HttpServletRequest): GlobalErrorFormat {
-        return errorForm(request, e,
+        return errorForm(
+            request, e,
             io.mustelidae.otter.sumatrana.api.common.Error(
                 io.mustelidae.otter.sumatrana.api.common.ErrorCode.P000,
                 "Oops, something went wrong."
@@ -90,7 +93,8 @@ class ExceptionConfiguration(
     @ResponseBody
     fun handleIllegalArgumentException(e: IllegalArgumentException, request: HttpServletRequest): GlobalErrorFormat {
         log.error("[T] wrong input.", e)
-        return errorForm(request, e,
+        return errorForm(
+            request, e,
             io.mustelidae.otter.sumatrana.api.common.Error(
                 io.mustelidae.otter.sumatrana.api.common.ErrorCode.HI01,
                 "Invalid input"

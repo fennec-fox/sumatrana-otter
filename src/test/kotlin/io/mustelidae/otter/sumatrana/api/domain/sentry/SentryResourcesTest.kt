@@ -4,9 +4,8 @@ import io.kotest.matchers.shouldNotBe
 import io.mustelidae.otter.sumatrana.utils.fromJson
 import org.junit.jupiter.api.Test
 
-
 class SentryResourcesTest {
-    
+
     @Test
     fun formatTest() {
         val json = """
@@ -232,7 +231,7 @@ class SentryResourcesTest {
               }
             }
         """.trimIndent()
-        
+
         val result = json.fromJson<SentryResources.Payload>()
 
         result.data.event shouldNotBe null

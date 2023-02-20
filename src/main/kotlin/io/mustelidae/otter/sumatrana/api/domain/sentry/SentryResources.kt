@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonProperty
  */
 class SentryResources {
 
-    data class Payload (
-        @JsonProperty("action") val action : String,
-        @JsonProperty("data") val data : Data,
-        @JsonProperty("installation") val installation : Installation,
-        @JsonProperty("actor") val actor : Actor? = null,
+    data class Payload(
+        @JsonProperty("action") val action: String,
+        @JsonProperty("data") val data: Data,
+        @JsonProperty("installation") val installation: Installation,
+        @JsonProperty("actor") val actor: Actor? = null,
     ) {
         data class Actor(
             @JsonProperty("id") val id: String? = null,
@@ -84,8 +84,8 @@ class SentryResources {
                     @JsonProperty("id") val id: String? = null
                 )
 
-                data class Exception (
-                    @JsonProperty("values" ) val values : ArrayList<Values>? = arrayListOf()
+                data class Exception(
+                    @JsonProperty("values") val values: ArrayList<Values>? = arrayListOf()
                 ) {
                     data class Values(
                         @JsonProperty("mechanism") val mechanism: Mechanism? = null,
@@ -109,8 +109,8 @@ class SentryResources {
                             )
                         }
 
-                        data class Stacktrace (
-                            @JsonProperty("frames" ) val frames : ArrayList<Frames>? = arrayListOf()
+                        data class Stacktrace(
+                            @JsonProperty("frames") val frames: ArrayList<Frames>? = arrayListOf()
                         ) {
                             data class Frames(
                                 @JsonProperty("abs_path") val absPath: String? = null,
@@ -150,14 +150,16 @@ class SentryResources {
                 )
 
                 data class RequestBody(
-                    @JsonProperty("cookies") val cookies: String? = null,
+                    /** array list or string */
+                    @JsonProperty("cookies") val cookies: Any? = null,
                     @JsonProperty("data") val data: String? = null,
                     @JsonProperty("env") val env: String? = null,
                     @JsonProperty("fragment") val fragment: String? = null,
                     @JsonProperty("headers") val headers: ArrayList<ArrayList<String>>? = arrayListOf(),
                     @JsonProperty("inferred_content_type") val inferredContentType: String? = null,
                     @JsonProperty("method") val method: String? = null,
-                    @JsonProperty("query_string") val queryString: ArrayList<String>? = arrayListOf(),
+                    /** array list or string */
+                    @JsonProperty("query_string") val queryString: Any? = null,
                     @JsonProperty("url") val url: String? = null
                 )
 
@@ -173,8 +175,8 @@ class SentryResources {
                     )
                 }
 
-                data class User (
-                    @JsonProperty("ip_address" ) val ipAddress : String? = null
+                data class User(
+                    @JsonProperty("ip_address") val ipAddress: String? = null
                 )
             }
 
@@ -189,44 +191,8 @@ class SentryResources {
             }
         }
 
-        data class Installation (
-            @JsonProperty("uuid" ) val uuid : String? = null
+        data class Installation(
+            @JsonProperty("uuid") val uuid: String? = null
         )
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

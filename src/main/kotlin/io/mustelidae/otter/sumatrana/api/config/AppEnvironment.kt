@@ -21,8 +21,8 @@ class AppEnvironment {
         var slack = Slack()
         var sentry = Sentry()
 
-        class Slack: ConnInfo()
-        class Sentry: ConnInfo()
+        class Slack : ConnInfo()
+        class Sentry : ConnInfo()
     }
 
     class Tunneling {

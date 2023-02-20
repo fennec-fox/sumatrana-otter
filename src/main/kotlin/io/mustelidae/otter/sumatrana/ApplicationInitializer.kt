@@ -1,6 +1,5 @@
 package io.mustelidae.otter.sumatrana
 
-
 import io.mustelidae.otter.sumatrana.api.config.AppEnvironment
 import io.mustelidae.otter.sumatrana.api.config.DevelopMistakeException
 import io.mustelidae.otter.sumatrana.api.domain.sentry.Sentry
@@ -54,12 +53,12 @@ private class SentryToSlackInitializer(
 
         tunnelingSet.rule.sentryToSlackMappings.forEach {
 
-            val sentry = groupOfSentry.find { sentry: Sentry -> sentry.key == it.sentryKey }?: throw DevelopMistakeException("not found sentry key")
-            val slack = groupOfSlack.find { slack: Slack -> slack.key == it.slackKey }?: throw DevelopMistakeException("not found slack key")
+            val sentry = groupOfSentry.find { sentry: Sentry -> sentry.key == it.sentryKey } ?: throw DevelopMistakeException("not found sentry key")
+            val slack = groupOfSlack.find { slack: Slack -> slack.key == it.slackKey } ?: throw DevelopMistakeException("not found slack key")
 
             val tunneling = SentryToSlackTunneling(
                 it.slackChannel,
-                it.style?: "default",
+                it.style ?: "default",
             ).apply {
                 setBySentry(sentry)
                 setBySlack(slack)
@@ -68,5 +67,3 @@ private class SentryToSlackInitializer(
         }
     }
 }
-
-

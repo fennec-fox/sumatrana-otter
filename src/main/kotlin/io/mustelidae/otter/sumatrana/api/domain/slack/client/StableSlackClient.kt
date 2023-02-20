@@ -10,13 +10,13 @@ import org.slf4j.LoggerFactory
 class StableSlackClient(
     private val env: AppEnvironment.EndPoint.Slack,
     private val httpClient: CloseableHttpClient
-): SlackClient, ClientSupport(
+) : SlackClient, ClientSupport(
     SlackResources.getMapper(),
     env.logging,
     LoggerFactory.getLogger(StableSlackClient::class.java)
 ) {
     override fun incomingWebhook(path: String, payload: SlackResources.Payload) {
-        val header = listOf("Content-Type" to "application/json")
+        val header = listOf("Content-Type" to "application/json; charset=utf-8")
 
         val url = "${env.host}$path"
 

@@ -4,7 +4,7 @@ import io.mustelidae.otter.sumatrana.api.domain.slack.SlackResources
 import io.mustelidae.otter.sumatrana.utils.toJson
 import org.slf4j.LoggerFactory
 
-class DummySlackClient: SlackClient {
+class DummySlackClient : SlackClient {
 
     private val log = LoggerFactory.getLogger(this::class.java)
     override fun incomingWebhook(path: String, payload: SlackResources.Payload) {

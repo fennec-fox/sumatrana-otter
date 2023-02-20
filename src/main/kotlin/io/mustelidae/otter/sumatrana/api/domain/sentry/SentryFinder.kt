@@ -12,6 +12,6 @@ class SentryFinder(
 ) {
 
     fun findOneByProjectId(id: Long): Sentry {
-        return sentryRepository.findByProjectId(id)?: throw DataNotFindException(id, "sentry project id not found")
+        return sentryRepository.findByProjectId(id) ?: throw DataNotFindException(id, "sentry project id not found")
     }
 }

@@ -5,7 +5,7 @@ import io.mustelidae.otter.sumatrana.api.domain.sentry.SentryResources
 import io.mustelidae.otter.sumatrana.utils.fromJson
 import org.junit.jupiter.api.Test
 
-class SentryForwardControllerTest: FlowTestSupport() {
+class SentryForwardControllerTest : FlowTestSupport() {
 
     @Test
     fun sentryToSlackNodeFormat() {
@@ -16,7 +16,6 @@ class SentryForwardControllerTest: FlowTestSupport() {
 
         sentryForwardControllerFlow.sentryToSlack(type, payload)
     }
-
 
     @Test
     fun sentryToSlackJavaFormat() {
@@ -249,8 +248,8 @@ class SentryForwardControllerTest: FlowTestSupport() {
             "uuid": "a8e5d37a-696c-4c54-adb5-b3f28d64c7de"
           }
         }
-    """.trimIndent() 
-    
+    """.trimIndent()
+
     val jsonOfJavaFormat = """
         {
           "action":"created",

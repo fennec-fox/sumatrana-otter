@@ -33,7 +33,7 @@ class Sentry(
 
     fun addBy(sentryToSlackTunneling: SentryToSlackTunneling) {
         sentryToSlackTunnelings.add(sentryToSlackTunneling)
-        if( sentryToSlackTunneling.sentry != this)
+        if (sentryToSlackTunneling.sentry != this)
             sentryToSlackTunneling.setBySentry(this)
     }
 }

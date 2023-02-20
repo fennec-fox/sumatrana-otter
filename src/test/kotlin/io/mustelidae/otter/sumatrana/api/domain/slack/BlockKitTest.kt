@@ -3,7 +3,6 @@ package io.mustelidae.otter.sumatrana.api.domain.slack
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-
 class BlockKitTest {
     private val mapper = SlackResources.getMapper()
     @Test
@@ -76,6 +75,5 @@ class BlockKitTest {
         json shouldBe """
             {"blocks":[{"elements":[{"type":"plain_text","text":"Author: K A Applegate","emoji":true},{"image_url":"https://pbs.twimg.com/profile_images/625633822235693056/lNGUneLX_400x400.jpg","alt_text":"cute cat","type":"image"}],"type":"context"},{"text":{"type":"mrkdwn","text":"This is a section block with a button."},"accessory":{"text":{"type":"plain_text","text":"Click Me","emoji":true},"action_id":"button-action","url":"https://google.com","value":"click_me_123","type":"button"},"type":"section"}]}
         """.trimIndent()
-
     }
 }

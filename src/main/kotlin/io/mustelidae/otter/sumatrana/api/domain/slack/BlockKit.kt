@@ -1,6 +1,5 @@
 package io.mustelidae.otter.sumatrana.api.domain.slack
 
-
 /**
  * use block kit builder
  * @ref https://app.slack.com/block-kit-builder
@@ -12,39 +11,38 @@ class BlockKit {
     /**
      * @ref https://api.slack.com/reference/block-kit#elements
      */
-    interface BlockKitElement: Block
+    interface BlockKitElement : Block
 
     /**
      * https://api.slack.com/reference/block-kit#objects
      */
-    interface BlockKitObject: Block
+    interface BlockKitObject : Block
 
     /**
      * @ref https://api.slack.com/reference/block-kit#blocks
      */
-    interface BlockKitBlock: Block
+    interface BlockKitBlock : Block
 
     data class Context(
         /** Only images BlockElement and text CompositionObject are allowed.*/
         val elements: List<BlockKitObject>,
         val blockId: String? = null
-    ): BlockKitBlock {
+    ) : BlockKitBlock {
         val type = "context"
     }
 
     data class Section(
-        val text:Text,
+        val text: Text,
         val blockId: String? = null,
         val fields: List<Text>? = null,
         val accessory: BlockKitElement? = null
-    ): BlockKitBlock {
+    ) : BlockKitBlock {
         val type = "section"
     }
 
-    class Divider: BlockKitBlock {
+    class Divider : BlockKitBlock {
         val type = "divider"
     }
-
 
     data class Button(
         val text: Text,
@@ -76,7 +74,7 @@ class BlockKit {
     data class Image(
         val imageUrl: String,
         val altText: String
-    ): BlockKitElement, BlockKitObject {
+    ) : BlockKitElement, BlockKitObject {
         val type = "image"
     }
 
@@ -85,7 +83,7 @@ class BlockKit {
         val text: String,
         val emoji: Boolean? = null,
         val verbatim: Boolean? = null
-    ): BlockKitObject {
+    ) : BlockKitObject {
         enum class Type {
             plain_text,
             mrkdwn
@@ -98,7 +96,7 @@ class BlockKit {
         val confirm: Text,
         val deny: Text,
         val style: Style? = null
-    ): BlockKitObject {
+    ) : BlockKitObject {
         enum class Style {
             danger,
             primary
@@ -108,10 +106,10 @@ class BlockKit {
     data class Option(
         val text: Text,
         val value: String
-    ): BlockKitObject
+    ) : BlockKitObject
 
     data class OptionGroup(
         val label: Text,
         val options: List<Option>
-    ): BlockKitObject
+    ) : BlockKitObject
 }
